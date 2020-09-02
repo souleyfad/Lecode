@@ -3,7 +3,7 @@
 @section('content')
 <div class="mt-3 pt-2">
 <div class="row text-center mt-5 pt-5" style="margin-top: 25%; background-image: url('images/bg1.jpg');">
-<aside class="mt-5  rounded mb-5 pt-1" style="margin-left: 25%; width:50%; background: rgba(0, 0, 0, 0.3)">
+<aside class="mt-5  rounded mb-4 pt-1" style="margin-left: 25%; width:50%; background: rgba(0, 0, 0, 0.3)">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col text-center">

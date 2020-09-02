@@ -41,13 +41,13 @@ class PanierController extends Controller
         });
 
         if($duplicata->isNotEmpty()){
-            return redirect()->back()->with('message', 'Livre deja ajouté.');
+            return redirect()->back()->with('message1', 'Livre deja ajouté.');
         }
         $ouvrage = Ouvrage::find($request->ouvrage_id);
 
         Cart::add($ouvrage->id, $ouvrage->Titre, 1, $ouvrage->prix)
         ->associate('App\Ouvrage');
-        return redirect()->back()->with('message', 'Livre ajouté avec succès ');
+        return redirect()->back()->with('message1', 'Livre ajouté avec succès ');
     }
 
     /**

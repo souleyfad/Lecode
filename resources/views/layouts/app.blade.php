@@ -27,6 +27,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css') }}" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -77,7 +78,12 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nom }} <span class="caret"></span>
                                 </a>
-
+<!--div class="a supprimer"><a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Se deconnecter
+                                    </a>
+</div-->
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -106,7 +112,7 @@
                             <a class="nav-link" href="{{ route('ouvrage') }}">Librairie</a>
                         </li>
                         <li class="nav-item col-auto">
-                            <a class="nav-link" href="#">A propos de nous</a>
+                            <a class="nav-link" href="{{ route('aboutus') }}">A propos de nous</a>
                         </li>
                         <li class="nav-item col-auto">
                             <a class="nav-link" href="{{ route('contact') }}">Contactez nous</a>
@@ -133,13 +139,14 @@
   
   </header>
             
-                @if(session('message'))
+                
+        <main class="py-4">
+        @if(session('message'))
                     <div class="alert alert-success mt-5 pt-5"  role="alert">
                         {{ session('message') }}
                     </div>
                 @endif
 
-        <main class="py-4">
             @yield('content')
         </main>
         <!-- Footer -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Genre;
 use App\Ouvrage;
+use App\Commentaire;
 use Illuminate\Http\Request;
 
 class OuvrageController extends Controller
@@ -15,8 +16,15 @@ class OuvrageController extends Controller
      */
     public function index()
     {
-        $ouvrage = Ouvrage::latest()->take(12)->get();
         $genre = Genre::all();
+        if(request()->genre)
+        {
+            $ouvrage = Ouvrage::with('genre')->whereHas('genre', function($query) {
+                $query->where('slug', request()->genre);
+            })->paginate(6);
+        } else {
+            $ouvrage = Ouvrage::latest()->take(12)->get();
+        }
         return view('ouvrage.index', compact('ouvrage', 'genre'));
     }
 
@@ -29,7 +37,7 @@ class OuvrageController extends Controller
     {
         $ouvrage = Ouvrage::all();
         $genre = Genre::all();
-        return view('ouvrage.create', compact('ouvrage'));
+        return view('ouvrage.create', compact('ouvrage', 'genre'));
     }
 
     /**
@@ -58,7 +66,7 @@ class OuvrageController extends Controller
         }
 
         $data->Titre= $request->Titre;
-        $data->Genre= $request->Genre;
+        $data->Genre_id= $request->Genre;
         $data->Resume= $request->Resume;
         $data->Auteur= $request->Auteur;
         $data->prix= $request->prix;
@@ -76,7 +84,10 @@ class OuvrageController extends Controller
     public function show($id)
     {
         $ouvrage = Ouvrage::find($id);
-        return view('ouvrage.show', compact('ouvrage'));
+        $commentaire = $ouvrage->withCount('Commentaire')->get();
+        //dd($commentaire[$id]);
+        //dd();
+        return view('ouvrage.show', compact('ouvrage','commentaire'));
     }
 
     /**

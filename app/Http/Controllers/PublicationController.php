@@ -33,7 +33,7 @@ class PublicationController extends Controller
     public function create()
     {
         $genre = Genre::all();
-        return view('Publication.create');
+        return view('Publication.create', compact('genre'));
     }
 
     /**
@@ -54,13 +54,13 @@ class PublicationController extends Controller
             $data->ouvrage=$filename;
         }
         $data->Titre= $request->Titre;
-        $data->Genre= $request->Genre;
+        $data->Genre_id= $request->Genre;
         $data->Resume= $request->Resume;
         $data->auteur= $request->auteur;
         
         
         auth()->user()->Publication()->save($data);
-        return redirect('Accueil.welcome')->with('message', 'Envoi effectuée avec succès.');
+        return redirect()->route('accueil')->with('message', 'Envoi effectuée avec succès.');
 
     }
 

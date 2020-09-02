@@ -36,7 +36,7 @@ class OuvrageSeeder extends Seeder
             DB::table('ouvrages')->insert([
                 'Titre' => 'Nostalgie',
                 'Genre_id' =>'3',
-                'Auteur' =>'Fadel',
+                'Auteur' =>'SOULEMANA',
                 'Resume' => 'un roman des plus passionant et des plus interessant conseillé pour vous',
                 'Couverture' => 'saf.jpg',
                 'Ouvrage' => 'ConceptionBD.pdf_1595368424.pdf',

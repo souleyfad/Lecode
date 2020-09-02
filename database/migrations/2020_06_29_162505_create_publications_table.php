@@ -20,7 +20,7 @@ class CreatePublicationsTable extends Migration
             $table->string('Auteur');
             $table->string('Resume');
             $table->string('ouvrage');
-            $table->unsignedBigInteger('Auteur_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="album py-5 bg-light">
         <div class="container mt-5 pt-5">
+        @if(session('message1'))
+                    <div class="alert alert-success mt-4 pt-1"  role="alert">
+                        {{ session('message1') }}
+                    </div>
+                @endif
 
             <div class="row">
                     <div class="col-md-2 offset-md-1 mt-5 pt-4">
@@ -22,7 +28,8 @@
             </div>
             <hr>
             <div>
-                <h5>Commentaires</h5>
+                <!--div class="ça ne marche pas"></div-->
+                <h5>{{ $ouvrage->commentaire->count() }} Commentaires</h5>
                 @forelse($ouvrage->commentaire as $comment)
                     <div class="card mb-2">
                         <div class="card-body">

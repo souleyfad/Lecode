@@ -4,10 +4,15 @@
 <div class="container mt-5 pt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-5 pt-4">
-            <div class="card">
-                <div class="card-header">Inscrivez-vous</div>
 
-                <div class="card-body">
+        <div class="modal-dialog text-center">
+            <div class="col-lg-12 main-section" style="margin: 0 auto; margin-top: 20px; padding: 0; width: 2000px;">
+                <div class="modal-content" style="background-color: #3F704D; padding: 0 5px; border-radius: 10px;">
+                    <div class="col-12 logo">
+                        <img src="{{ asset('images/monlogo.png') }}" class="lelogo" alt="le logo" 
+                        style=" height : 120px; width : 120px">
+                    </div>
+                    <div class="col-12 form-input">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -117,14 +122,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-2">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('S\'enregistrer') }}
                                 </button>
                     </form>
+                    </div>
                 </div>
             </div>
+        </div>
+
         </div>
     </div>
 </div>

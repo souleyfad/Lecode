@@ -122,7 +122,7 @@
 
             <div class="row mb-2">
                 @foreach($ouvrage as $ouvrage)
-                <div class="col-md-2 ml-5 ih-item square effect4">
+                <div class="col-md-2 ml-1 ih-item square effect4">
                 <a href="{{ route('ouvrage.show',$ouvrage->id) }}" class="presentation">
                 <div class="card mb-4 shadow-sm">
                     <img src="/storage/Couverture/{{ $ouvrage->Couverture }}" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="couverture">

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //accueil
+Route::get('/', function () {
+    DB::update("UPDATE users
+    SET isAuteur = 1
+    WHERE nom IN (\"SELECT Auteur FROM ouvrage\")");
+});
+
 Route::get('/', 'AccueilController@index')->name('accueil');
+Route::get('a-propos-de-nous', function () {
+    return view('Accueil.aboutus');
+})->name('aboutus');
+
 Route::get('contactez-nous', 'AccueilController@contact')->name('contact');
 Route::get('contact','AccueilController@create')->name('contact.create');
 Route::post('contact','AccueilController@store')->name('contact.store');
