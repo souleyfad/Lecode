@@ -53,10 +53,11 @@
             <a href="{{ route('ouvrage.show',$ouvrage->id) }}" class="presentation">
                 <div class="card mb-4 shadow-sm">
                     <img src="/storage/Couverture/{{ $ouvrage->Couverture }}" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="couverture">
+                    <span style="color: #edbb00;">{{ $ouvrage->commentaire->count() }} commentaire(s)</span>
                     <div class="card-body">
                     <p class="card-text" style="font-size: 15px">
                     {{ $ouvrage->Auteur }} <br> 
-                    <strong>   {{ $ouvrage->Titre }} <br></strong>
+                    <strong style="color: #3F704D;">   {{ $ouvrage->Titre }} <br></strong>
                     {{ $ouvrage->genre->name }} <br>
                             {{ $ouvrage->prix }}<sup>F</sup>
                     </p>

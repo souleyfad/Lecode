@@ -57,10 +57,10 @@
         @endif
         <div class="card mb-4 pb-1 shadow-sm">
             <div class="d-flex pt-2">
-                    <p class="card-text pl-2 mr-5">
+                    <p class="p-2 card-text pl-2 mr-5">
                         Prix Total:<strong>{{ Cart::subtotal() }}</strong>
                     </p>
-                <button type="submit" class="btn btn-primary ml-2">Valider la commande</button>
+                <a href="{{ route('panier.show') }}" type="submit" class="ml-auto mr-2 p-2 bd-highlight btn btn-success ">Valider la commande</a>
             </div>
     </div>
 @endsection

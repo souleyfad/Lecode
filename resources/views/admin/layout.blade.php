@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -27,68 +27,120 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css') }}" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 </head>
-<body>
-<div class="row mt-5 pt-5">
-<div class="col-2 mt-5 pt-4">
-<nav id="dash" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="{{ route('admin.home') }}" style="background :  #3F704D; color: white; ">
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-dark" style="background :  #3F704D; color: white; ">
+            <a class="navbar-brand" href="index.html">
             <img src="{{ asset('images/monlogo.png') }}" class="logo" alt="le logo" 
                     style=" height : 100px; width : 100px">
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.users') }}">
-              <span data-feather="file"></span>
-              Utilsateurs
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('publication.store') }}">
-              <span data-feather="shopping-cart"></span>
-              Publications
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('ouvrage.create') }}">
-              <span data-feather="#"></span>
-              Ouvrages
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Achats
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Actualités
-            </a>
-          </li>
-        </ul>
-    </div>
-</nav>
-</div>
-<div class="col-10">
-@if(session('message'))
-                    <div class="alert alert-success"  role="alert">
-                        {{ session('message') }}
+            </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            ><!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                            </svg>
+                        </button>
                     </div>
-                @endif
-<main class="py-4">
-            @yield('contenu')
-        </main>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-0" style="background :  #3F704D; color: white; ">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw">
+                    Mon compte
+                    </i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                                        Se deconnecter
+                                    </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu"  style="background :  #3F704D;">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Tableau</div>
+                            <a class="nav-link" href="{{ route('admin.home') }}" style="color: white;">
+                                Accueil
+                            </a>
+                            <a class="nav-link collapsed"  style="color: white;" href="{{ route('admin.users') }}">
+                                Utilisateurs
+                            </a>
+                            <a class="nav-link collapsed"  style="color: white;" href="{{ route('ouvrage.create') }}">
+                                Ouvrages
+                            </a>
+				            <a class="nav-link" style="color: white;" href="{{ route('publication.store') }}">
+                                Publications
+                            </a>
+                            <a class="nav-link" style="color: white;" href="charts.html">
+                                Achats
+                            </a>
+                            <a class="nav-link" style="color: white;" href="tables.html">
+                                Actualités
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4 text-center" style="color:  #3F704D;">Gestion de EasyEdition</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        @if(session('message'))
+                          <div class="alert alert-success"  role="alert">
+                            {{ session('message') }}
+                          </div>
+                            @endif
+                          <main class="py-1">
+                            @yield('contenu')
+                          </main>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
-</div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+
 </body>
 </html>
+

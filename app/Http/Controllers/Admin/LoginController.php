@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -46,5 +49,21 @@ class LoginController extends Controller
     public function guard() {
         return auth::guard('admin');
     }
+    use AuthenticatesUsers;
+    /*public function logout(Request $request) {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return view('admin.login');
+        }
+
+        return $request->wantsJson()
+            ? new Response('', 204)
+            : redirect('admin.login');
+    }*/
 
 }

@@ -25,7 +25,7 @@
             <tr>
             <th scope="row">{{ $pub->id }}</th>
             <td>{{ $pub->Titre }}</td>
-            <td>{{ $pub->Genre }}</td>
+            <td>{{ $pub->genre->name }}</td>
             <td>{{ $pub->Auteur }}</td>
             <td>{{ $pub->user->nom }}</td>
             <td>

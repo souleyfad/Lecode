@@ -57,9 +57,10 @@ class PublicationController extends Controller
         $data->Genre_id= $request->Genre;
         $data->Resume= $request->Resume;
         $data->auteur= $request->auteur;
-        
-        
+
         auth()->user()->Publication()->save($data);
+        auth()->user()->isAuteur= 1;
+        auth()->user()->save();
         return redirect()->route('accueil')->with('message', 'Envoi effectuée avec succès.');
 
     }

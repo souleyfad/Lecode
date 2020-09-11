@@ -22,5 +22,14 @@ class AdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),
         ]);
+        DB::table('admins')->insert([
+            'nom' => 'admin2',
+            'prenom' => 'admin2',
+            'pseudo' => 'admin2',
+            'date_naissance' => '10/11/2012',
+            'adresse' => 'Gbonvie',
+            'email' => 'admin2@gmail.com',
+            'password' => Hash::make('admin2'),
+        ]);
     }
 }

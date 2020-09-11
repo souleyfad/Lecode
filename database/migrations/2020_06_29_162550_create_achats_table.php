@@ -15,8 +15,10 @@ class CreateAchatsTable extends Migration
     {
         Schema::create('achats', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
+            $table->integer('montant');
             $table->string('moyenPayement');
+            $table->text('ouvrage');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

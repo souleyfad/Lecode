@@ -56,12 +56,11 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $ouvrage = Ouvrage::find($id);
         //dd($ouvrage->model->prix);
-        $imprime = floatval($ouvrage->prix) + 1000;
-        return view('panier.show', compact('ouvrage', 'imprime'));
+        //$imprime = floatval($ouvrage->prix) + 1000;
+        return view('panier.show');
     }
 
     /**

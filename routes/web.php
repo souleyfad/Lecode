@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //accueil
-Route::get('/', function () {
+/*Route::get('/', function () {
     DB::update("UPDATE users
     SET isAuteur = 1
     WHERE nom IN (\"SELECT Auteur FROM ouvrage\")");
-});
+});*/
 
 Route::get('/', 'AccueilController@index')->name('accueil');
 Route::get('a-propos-de-nous', function () {
@@ -38,7 +38,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Administration authentification
 Route::get('admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
 Route::post('admin', 'Admin\LoginController@login');
+Route::get('admin/logout', 'Admin\LoginController@logout')->name('admin.logout');
 Route::get('admin/home', 'AdminController@index')->name('admin.home');
+//admin gestion utilisateurs
 Route::get('admin/users', 'Admin\UserController@index')->name('admin.users');
 Route::get('admin/users/{user}', 'Admin\UserController@show')->name('user.show');
 Route::get('admin/users/{user}/edit', 'Admin\UserController@edit')->name('user.edit');
@@ -66,5 +68,8 @@ Route::post('commentaire/{ouvrage}','CommentaireController@store')->name('commen
 //Panier
 Route::get('panier','PanierController@index')->name('panier');
 Route::post('panier/ajouter','PanierController@store')->name('panier.store');
-Route::get('panier/{panier}','PanierController@show')->name('panier.show');
+Route::get('panier/commande','PanierController@show')->name('panier.show');
 Route::delete('panier/{panier}','PanierController@destroy')->name('panier.destroy');
+
+//achat
+Route::post('achat','AchatController@store')->name('achat.store');

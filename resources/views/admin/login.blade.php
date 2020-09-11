@@ -1,14 +1,19 @@
-@extends('layouts.app')
+@extends('admin.layout')
 
-@section('content')
-<div class="container mt-5">
+@section('contenu')
+<div class="container mt-5 pt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-5">
-            <div class="card">
-                <div class="card-header">Se connecter en tant que administrateur</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('admin.login') }}">
+        <div class="col-md-8 mt-5 pt-4">
+            
+        <div class="modal-dialog text-center">
+            <div class="col-sm-9 main-section" style="margin: 0 auto; margin-top: 50px; padding: 0;">
+                <div class="modal-content" style="background-color: #3F704D; padding: 0 5px; border-radius: 10px;">
+                    <div class="col-12 logo">
+                        <img src="{{ asset('images/monlogo.png') }}" class="lelogo" alt="le logo" 
+                        style=" height : 120px; width : 120px">
+                    </div>
+                    <div class="col-12 form-input">
+                 <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -65,8 +70,11 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
+        </div>
+
         </div>
     </div>
 </div>

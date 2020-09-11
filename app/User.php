@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Achat;
 use App\Commentaire;
 use App\Publication;
 use App\Mail\WelcomeUserMail;
@@ -54,6 +55,10 @@ class User extends Authenticatable
 
     public function Commentaire(){
         return $this->hasMany('App\Commentaire');
+    }
+
+    public function Achats(){
+        return $this->hasMany('App\Achat');
     }
 
 }
