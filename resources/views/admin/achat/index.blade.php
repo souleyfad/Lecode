@@ -16,35 +16,27 @@
         <thead>
             <tr>
             <th scope="col">id</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Pseudo</th>
-            <th scope="col">Editeur</th>
-            <th scope="col">Auteur</th>
-            <th scope="col">Client</th>
+            <th scope="col">Acheteur</th>
+            <th scope="col">Moyen Payement</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Date d'achat</th>
             <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($user as $user) 
+        @foreach($achat as $achat) 
             <tr>
-            <th scope="row">{{ $user->id }}</th>
-            <td>{{ $user->nom }}</td>
-            <td>{{ $user->prenom }}</td>
-            <td>{{ $user->pseudo }}</td>
-            <td>@if( $user->isEditeur == 0) Non  
-                @elseif( $user->isEditeur == 1) Oui 
+            <th scope="row">{{ $achat->id }}</th>
+            <td>@if( $achat->user_id == 0) Non identifié  
+                @else {{ $achat->user->nom }} 
                 @endif
             </td>
-            <td>@if( $user->isAuteur == 0) Non  
-                @elseif( $user->isAuteur == 1) Oui 
-                @endif</td>
-            <td>@if( $user->isClient == 0) Non  
-                @elseif( $user->isClient == 1) Oui 
-                @endif</td>
+            <td>{{ $achat->montant }}</td>
+            <td>{{ $achat->moyenPayement }}</td>
+            <td>{{ $achat->created_at->format('d/m/Y') }}</td>
             <td>
-            <a href="{{ route('user.show', $user->id) }}" class="btn btn-secondary">Voir</a>
-                <form action="{{ route('user.destroy', $user->id) }}" method="POST" style=" display: inline">
+            <a href="#" class="btn btn-secondary">Voir</a>
+                <form action="#" method="POST" style=" display: inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger"> supprrimer</button>

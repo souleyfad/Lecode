@@ -7,6 +7,7 @@ use App\Commentaire;
 use App\Publication;
 use App\Mail\WelcomeUserMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'prenom', 'pseudo', 'date_naissance', 'adresse', 'email', 'password',
+        'nom', 'prenom', 'pseudo', 'date_naissance', 'adresse', 'email', 'password', 'isEditeur', 'isAuteur', 'isClient',
     ];
 
     /**

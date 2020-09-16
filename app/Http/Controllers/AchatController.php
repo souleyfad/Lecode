@@ -15,7 +15,8 @@ class AchatController extends Controller
      */
     public function index()
     {
-        //
+        $achat = Achat::all();
+        return view('admin.achat.index', compact('achat'));
     }
 
     /**

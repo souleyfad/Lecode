@@ -1,9 +1,9 @@
 @extends('admin.layout')
 
 @section('contenu')
-<div class="container mt-5 pt-5">
+<div class="container mt-2 pt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-5 pt-4">
+        <div class="col-md-8 mt-3 pt-4">
             
         <div class="modal-dialog text-center">
             <div class="col-sm-9 main-section" style="margin: 0 auto; margin-top: 50px; padding: 0;">

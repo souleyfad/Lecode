@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.createuser');
     }
 
     /**
@@ -37,7 +46,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=request()->validate([
+            'nom' => 'required|max:255',
+            'prenom' => 'required|max:255',
+            'pseudo' => 'required|min:2',
+            'date_naissance' => 'required|date',
+            'adresse' => 'required|min:2',
+            'email' => 'required|email',
+            'password' => 'required|min:4',
+            'isEditeur' => 'required|boolean',
+            'isAuteur' => 'required|boolean',
+            'isClient' => 'required|boolean',
+        ]);
+        //dd($data);
+        User::create($data)->save();
+        return redirect()->route('admin.users')->with('message', 'Ajout effectuée avec succès.');
     }
 
     /**
@@ -49,7 +72,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('admin.showuser',compact('user'));
+        return view('admin.user.showuser',compact('user'));
     }
 
     /**
@@ -61,7 +84,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('admin.edituser',compact('user'));
+        return view('admin.user.edituser',compact('user'));
     }
 
     /**
@@ -85,8 +108,12 @@ class UserController extends Controller
             'isAuteur' => 'required|boolean',
             'isClient' => 'required|boolean',
         ]);
+        //dd($data);
         $user->update($data);
-        return redirect('admin.showuser')->with('message', 'Modification effectuée avec succès.');
+        
+        //return redirect()->route('admin.showuser'.$user->id)->with('message', 'Modification effectuée avec succès.');
+         return redirect()->route('admin.users')->with('message', 'Modification effectuée avec succès.');
+
     }
 
     /**
@@ -98,6 +125,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.showuser', ['user' => $user])->with('message', 'Suppression effectuée avec succès.');
+        return redirect()->route('admin.users')->with('message', 'Suppression effectuée avec succès.');
     }
 }

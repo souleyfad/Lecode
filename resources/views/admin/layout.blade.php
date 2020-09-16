@@ -58,13 +58,13 @@
             <ul class="navbar-nav ml-auto ml-md-0" style="background :  #3F704D; color: white; ">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw">
-                    Mon compte
-                    </i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="{{ route('admin.logout') }}">
-                                        Se deconnecter
+                    Mon compte</i></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                                      Se deconnecter
                                     </a>
-                    </div>
+
+                                </div>
                 </li>
             </ul>
         </nav>
@@ -86,7 +86,7 @@
 				            <a class="nav-link" style="color: white;" href="{{ route('publication.store') }}">
                                 Publications
                             </a>
-                            <a class="nav-link" style="color: white;" href="charts.html">
+                            <a class="nav-link" style="color: white;" href="{{ route('achats.liste') }}">
                                 Achats
                             </a>
                             <a class="nav-link" style="color: white;" href="tables.html">
