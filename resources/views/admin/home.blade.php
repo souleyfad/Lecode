@@ -38,8 +38,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+</div>
                             <div class="card">
                                 <div class="card-header">Dashboard Admin</div>
                                 <div class="card-body">
@@ -51,6 +50,5 @@
                                 You are logged in as admin!
                                 </div>
                             </div>
-                        </div>
     
 @endsection

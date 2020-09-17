@@ -86,39 +86,5 @@
                     </form>
                 </div>
         </div>
-
-        <div class="table-responsive">
-        <table class="table table-bordered table-hover mt-5">
-            <thead>
-                <tr>
-                <th scope="col">id</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Genre</th>
-                <th scope="col">Auteur</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($ouvrage as $ouvrage) 
-                <tr>
-                <th scope="row">{{ $ouvrage->id }}</th>
-                <td>{{ $ouvrage->Titre }}</td>
-                <td>{{ $ouvrage->Genre }}</td>
-                <td>{{ $ouvrage->Auteur }}</td>
-                <td>{{ $ouvrage->prix }}</td>
-                <td>
-                <a href="{{ route('ouvrage.show', $ouvrage->id) }}" class="btn btn-secondary">Voir</a>
-                    <form action="#" method="POST" style=" display: inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"> supprrimer</button>
-                    </form>
-                </td>
-                </tr>
-            @endforeach
-            </tbody>
-            </table>
-        </div>
     </div>
 @endsection

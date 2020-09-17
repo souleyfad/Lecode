@@ -60,6 +60,7 @@
                       </form>
                     </div>
                   <div class="collapse navbar-collapse w-100" id="" style="font-size: 18px">
+                  <!--div class="navbar-collapse w-100" id="" style="font-size: 18px"-->
                       <!-- Right Side Of Navbar -->
                     <!--pour on ne sait jamais{{ __('Login') }}  {{ __('Register') }} 
                     {{ __('Logout') }} {{ __('Forgot Your Password?') }} -->
@@ -103,7 +104,8 @@
             </div>
           </nav>
           <nav class="navbar navbar-expand-md navbar-light shadow-sm mt-0 pt-0">
-            <div class="collapse navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;">
+            <!--div class="collapse navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;"-->
+            <div class="navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav row" style="font-size: 16px">
                         <li class="nav-item active col-auto">
@@ -119,8 +121,7 @@
                             <a class="nav-link" href="{{ route('contact') }}">Contactez nous</a>
                         </li>
                         <li class="nav-item col-auto">
-                            <a class="nav-link" href="{{ route('publication.create') }}">
-                            Publier-vous</a>
+                            <a class="nav-link" href="{{ route('publication.create') }}">Publier-vous</a>
                         </li>
                         <li class="nav-item rounded col-auto" style="background-color : #edbb00;">
                         <a class="nav-link" href="{{ route('panier') }}">

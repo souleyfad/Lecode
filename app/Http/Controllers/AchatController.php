@@ -110,4 +110,17 @@ class AchatController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        request()->validate([
+            'indice' => 'required|min:4'
+        ]);
+        $indice = $request->get('indice');
+        $achat = Achat::where('montant', 'like', "%$indice%")
+            ->orWhere('moyenPayement', 'like', "%$indice%")
+            ->paginate(6);
+            return view('admin.achat.index', compact('achat'));
+        }
 }
+

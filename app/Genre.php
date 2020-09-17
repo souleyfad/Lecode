@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
+    protected $fillable = ['name', 'slug'];
     public function Ouvrage()
     {
         return $this->hasMany('App\Ouvrage');

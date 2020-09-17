@@ -127,4 +127,17 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.users')->with('message', 'Suppression effectuée avec succès.');
     }
+
+    public function search(Request $request)
+    {
+        request()->validate([
+            'indice' => 'required|min:4'
+        ]);
+        $indice = $request->get('indice');
+        $user = User::where('nom', 'like', "%$indice%")
+            ->orWhere('prenom', 'like', "%$indice%")
+            ->orWhere('pseudo', 'like', "%$indice%")
+            ->paginate(6);
+            return view('admin.user.users', compact('user'));
+    }
 }

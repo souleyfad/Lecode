@@ -5,10 +5,10 @@
 
     <div class="row">
         <div class="col-auto">
-            <a href="{{ route('users.create') }}" class="btn btn-success text-left ml-0">Nouvel utilisateur</a>
+            <a href="{{ route('genre.create')}}" class="btn btn-success text-left ml-0">Ajouter un genre</a>
         </div>
         <div class="col-auto  offset-5">
-        <form action="{{ route('user.search') }}" method="get" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <form action="{{ route('genre.search') }}" method="get" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <input class="form-control" type="text" name="indice" value="{{ request()->indice ?? '' }}" placeholder="Tapez votre recherche" />
                     <div class="input-group-append">
@@ -29,35 +29,20 @@
         <thead>
             <tr>
             <th scope="col">id</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Pseudo</th>
-            <th scope="col">Editeur</th>
-            <th scope="col">Auteur</th>
-            <th scope="col">Client</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Slug</th>
             <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($user as $user) 
+        @foreach($genre as $genre) 
             <tr>
-            <th scope="row">{{ $user->id }}</th>
-            <td>{{ $user->nom }}</td>
-            <td>{{ $user->prenom }}</td>
-            <td>{{ $user->pseudo }}</td>
-            <td>@if( $user->isEditeur == 0) Non  
-                @elseif( $user->isEditeur == 1) Oui 
-                @endif
-            </td>
-            <td>@if( $user->isAuteur == 0) Non  
-                @elseif( $user->isAuteur == 1) Oui 
-                @endif</td>
-            <td>@if( $user->isClient == 0) Non  
-                @elseif( $user->isClient == 1) Oui 
-                @endif</td>
+            <th scope="row">{{ $genre->id }}</th>
+            <td>{{ $genre->name }}</td>
+            <td>{{ $genre->slug }}</td>
             <td>
-            <a href="{{ route('user.show', $user->id) }}" class="btn btn-secondary">Voir</a>
-                <form action="{{ route('user.destroy', $user->id) }}" method="POST" style=" display: inline">
+            <a href="{{ route('genre.show',$genre->id )}}" class="btn btn-secondary">Voir</a>
+                <form action="{{ route('genre.destroy',$genre->id )}}" method="POST" style=" display: inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger"> supprrimer</button>

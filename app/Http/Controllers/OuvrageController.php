@@ -121,7 +121,8 @@ class OuvrageController extends Controller
      */
     public function destroy(Ouvrage $ouvrage)
     {
-        //
+        $ouvrage->delete();
+        return redirect()->route('admin.ouvrage.viewadmin')->with('message', 'Suppression effectuée avec succès.');      
     }
 
     public function search(Request $request)
@@ -135,7 +136,7 @@ class OuvrageController extends Controller
             ->orWhere('Resume', 'like', "%$indice%")
             ->paginate(6);
             $genre = Genre::all();
-        return view('ouvrage.search', compact('ouvrage','genre'));
+            return view('ouvrage.index', compact('ouvrage', 'genre'));
     }
 
 }

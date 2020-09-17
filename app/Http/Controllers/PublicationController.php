@@ -61,7 +61,7 @@ class PublicationController extends Controller
         auth()->user()->Publication()->save($data);
         auth()->user()->isAuteur= 1;
         auth()->user()->save();
-        return redirect()->route('accueil')->with('message', 'Envoi effectuée avec succès.');
+        return redirect()->back()->with('message', 'Envoi effectuée avec succès.');
 
     }
 
@@ -110,5 +110,18 @@ class PublicationController extends Controller
     {
         $publication->delete();
         return redirect('Publication.index')->with('message', 'Suppression effectuée avec succès.');      
+    }
+
+    public function search(Request $request)
+    {
+        request()->validate([
+            'indice' => 'required|min:4'
+        ]);
+        $indice = $request->get('indice');
+        $publication = Publication::where('Titre', 'like', "%$indice%")
+            ->orWhere('Auteur', 'like', "%$indice%")
+            ->orWhere('Resume', 'like', "%$indice%")
+            ->paginate(6);
+            return view('Publication.index', compact('publication'));
     }
 }

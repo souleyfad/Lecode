@@ -80,16 +80,19 @@
                             <a class="nav-link collapsed"  style="color: white;" href="{{ route('admin.users') }}">
                                 Utilisateurs
                             </a>
-                            <a class="nav-link collapsed"  style="color: white;" href="{{ route('ouvrage.create') }}">
+                            <a class="nav-link collapsed"  style="color: white;" href="{{ route('admin.ouvrage') }}">
                                 Ouvrages
                             </a>
-				            <a class="nav-link" style="color: white;" href="{{ route('publication.store') }}">
+				            <a class="nav-link" style="color: white;" href="{{ route('publication') }}">
                                 Publications
                             </a>
                             <a class="nav-link" style="color: white;" href="{{ route('achats.liste') }}">
                                 Achats
                             </a>
-                            <a class="nav-link" style="color: white;" href="tables.html">
+                            <a class="nav-link" style="color: white;" href="{{ route('admin.genre') }}">
+                                Genre
+                            </a>
+                            <a class="nav-link" style="color: white;" href="#">
                                 Actualités
                             </a>
                         </div>
