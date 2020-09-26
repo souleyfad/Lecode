@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Achat;
+use App\User;
 use App\Ouvrage;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
@@ -30,5 +32,18 @@ class AccueilController extends Controller
        ]);
         Mail::to('test@test.com')->send(new ContactMail($data));
         return redirect('Accueil.welcome')->with('message','message envoyé avec succès'); 
+    }
+
+    public function bibliotheque(User $user){
+        $id = $user->id;
+        $achats = Achat::where('user_id', $id)->get();
+            for($i = 0; $i < $achats->count(); $i++){
+                $livres[$i] = unserialize($achats[$i]->ouvrage);
+            }
+            $l=count($livres);
+            for($i = 0; $i < $l+1; $i++){
+                dd($livres[$i]);
+            }
+        return view('Accueil.bibliotheque', compact('achats', 'livres'));
     }
 }

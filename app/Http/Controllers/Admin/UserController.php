@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -52,12 +53,13 @@ class UserController extends Controller
             'pseudo' => 'required|min:2',
             'date_naissance' => 'required|date',
             'adresse' => 'required|min:2',
-            'email' => 'required|email',
-            'password' => 'required|min:4',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4|confirmed',
             'isEditeur' => 'required|boolean',
             'isAuteur' => 'required|boolean',
             'isClient' => 'required|boolean',
         ]);
+        $data['password']= Hash::make($data['password']);
         //dd($data);
         User::create($data)->save();
         return redirect()->route('admin.users')->with('message', 'Ajout effectuée avec succès.');
@@ -102,8 +104,8 @@ class UserController extends Controller
             'pseudo' => 'required|min:2',
             'date_naissance' => 'required|date',
             'adresse' => 'required|min:2',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4|confirmed',
             'isEditeur' => 'required|boolean',
             'isAuteur' => 'required|boolean',
             'isClient' => 'required|boolean',

@@ -96,6 +96,12 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{ route('mespublications', Auth::user()->id) }}">
+                                        Mes publications
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('bibliotheque', Auth::user()->id) }}">
+                                        Ma bibliothèque
+                                    </a>
                                 </div>
                             </li>
                         @endguest
@@ -104,8 +110,8 @@
             </div>
           </nav>
           <nav class="navbar navbar-expand-md navbar-light shadow-sm mt-0 pt-0">
-            <!--div class="collapse navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;"-->
-            <div class="navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;">
+            <div class="collapse navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;">
+            <!--div class="navbar-collapse" id="lanavbar" style="font-size: 18px; background-color : #3F704D;"-->
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav row" style="font-size: 16px">
                         <li class="nav-item active col-auto">
@@ -121,9 +127,6 @@
                             <a class="nav-link" href="{{ route('contact') }}">Contactez nous</a>
                         </li>
                         <li class="nav-item col-auto">
-                            <a class="nav-link" href="{{ route('publication.create') }}">Publier-vous</a>
-                        </li>
-                        <li class="nav-item rounded col-auto" style="background-color : #edbb00;">
                         <a class="nav-link" href="{{ route('panier') }}">
                         <div class="panier">
                             <span style="  display : inline-block ">mon panier</span>
@@ -134,6 +137,9 @@
                             <span class="badge badge-pill badge-dark" style="  display : inline-block ">{{ Cart::count() }}</span>
                             </div>
                         </a>  
+                        </li>
+                        <li class="nav-item rounded col-auto" style="background-color : #edbb00;">
+                        <a class="nav-link" href="{{ route('publication.create') }}">Publier-vous</a>
                         </li>
                 </ul>
                 </div>

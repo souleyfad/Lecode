@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Genre;
 use App\Publication;
+use App\User;
 use Illuminate\Http\Request;
 
 class PublicationController extends Controller
@@ -11,7 +12,7 @@ class PublicationController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show','destroy']);
+        $this->middleware('auth')->except(['index','show','destroy','search','valide']);
     }
     /**
      * Display a listing of the resource.
@@ -123,5 +124,24 @@ class PublicationController extends Controller
             ->orWhere('Resume', 'like', "%$indice%")
             ->paginate(6);
             return view('Publication.index', compact('publication'));
+    }
+
+    public function valide(Publication $publication)
+    {
+        $publication->valide = true;
+        $publication->save();
+        return back()->with('message', 'validé avec succès vous êtes prêt pour éditer cet ouvrage.');
+    }
+
+    public function mespublication(User $user){
+
+        $id = $user->id;
+        $publication = Publication::where('user_id', $id)->get();
+        return view('Publication.mespublication', compact('publication'));
+    }
+
+    public function avancee($id){
+        $publication = Publication::find($id);
+        return view('Publication.avancee', compact('publication'));
     }
 }

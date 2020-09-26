@@ -25,6 +25,7 @@ Route::get('a-propos-de-nous', function () {
 Route::get('contactez-nous', 'AccueilController@contact')->name('contact');
 Route::get('contact','AccueilController@create')->name('contact.create');
 Route::post('contact','AccueilController@store')->name('contact.store');
+Route::get('accueil/{user}/bibliotheque', 'AccueilController@bibliotheque')->name('bibliotheque');
 
 //authentification
 Auth::routes();
@@ -54,16 +55,19 @@ Route::patch('admin/users/{user}', 'Admin\UserController@update')->name('user.up
 Route::delete('admin/users/{user}','Admin\UserController@destroy')->name('user.destroy');
 
 //Publication
-Route::get('publication','PublicationController@index')->name('publication')->middleware('auth:admin');//admin
+Route::get('publication','PublicationController@index')->name('publication')->middleware('auth:admin');//admin et editeur
 Route::get('publication/create','PublicationController@create')->name('publication.create');
 Route::post('publication/create','PublicationController@store')->name('publication.store');
-Route::get('publication/{publication}','PublicationController@show')->name('publication.show')->middleware('auth:admin');//admin
+Route::get('publication/{publication}','PublicationController@show')->name('publication.show');//admin et editeur
 Route::delete('publication/{publication}','PublicationController@destroy')->name('publication.destroy')->middleware('auth:admin');//admin
-Route::get('admin/publication/search','PublicationController@search')->name('publication.search')->middleware('auth:admin');//admin;
+Route::get('admin/publication/search','PublicationController@search')->name('publication.search');//admin et editeur;
+Route::post('admin/publication/{publication}/valide','PublicationController@valide')->name('publication.valide');//admin et editeur;
 Route::get('publication/{publication}/apercu', function ($id) {
     $publication = Publication::find($id);
     return view('Publication.apercu',compact('publication'));
 })->name('apercu');
+Route::get('publication/{user}/œuvres','PublicationController@mespublication')->name('mespublications');
+Route::get('publication/œuvres/{publication}','PublicationController@avancee')->name('publication.avancee');
 
 //Ouvrage et Librairie
 Route::get('ouvrage','OuvrageController@index')->name('ouvrage');

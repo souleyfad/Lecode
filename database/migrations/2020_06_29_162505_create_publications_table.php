@@ -21,6 +21,7 @@ class CreatePublicationsTable extends Migration
             $table->string('Resume');
             $table->string('ouvrage');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('valide')->default(false);  
             $table->timestamps();
         });
     }

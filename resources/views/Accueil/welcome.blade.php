@@ -14,7 +14,7 @@
                     <img src="{{ asset('images/1.jpg') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="row">
-                        <div class="col-6" style="padding-bottom : 200px; font-size: 50px; color : #edbb00">
+                        <div class="col-6" style="padding-bottom : 200px; font-size: 50px; color : #edbb00; background-color: #ffffff; opacity: 0.8">
                             <p style="font-size: 20px">Le Lorem Ipsum est simplement du faux texte employé dans la
                             composition et la mise en page avant impression. Le Lorem Ipsum est le faux 
                             texte standard de l'imprimerie depuis les années 1500, quand un imprimeur </p>
@@ -29,7 +29,7 @@
                     <img src="{{ asset('images/2.jpg') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block" style="padding-bottom : 30px; color : #edbb00">
                         <div class="row">
-                        <div class="col-6" style="padding-bottom : 200px; font-size: 50px; color : #edbb00">
+                        <div class="col-6" style="padding-bottom : 200px; font-size: 50px; color : #edbb00; background-color: #ffffff; opacity: 0.8">
                             <p style="font-size: 20px">Le Lorem Ipsum est simplement du faux texte employé dans la
                             composition et la mise en page avant impression. Le Lorem Ipsum est le faux 
                             texte standard de l'imprimerie depuis les années 1500, quand un imprimeur </p>
@@ -44,7 +44,7 @@
                     <img src="{{ asset('images/3.jpg') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block " style="padding-bottom : 30px; color : #edbb00">
                         <div class="row">
-                        <div class="col-6" style="padding-bottom : 200px; font-size: 50px; color : #edbb00">
+                        <div class="col-6" style="padding-bottom : 200px; font-size: 50px; color : #edbb00; background-color: #ffffff; opacity: 0.8">
                             <p style="font-size: 20px">Le Lorem Ipsum est simplement du faux texte employé dans la
                             composition et la mise en page avant impression. Le Lorem Ipsum est le faux 
                             texte standard de l'imprimerie depuis les années 1500, quand un imprimeur </p>

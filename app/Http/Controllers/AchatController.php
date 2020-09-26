@@ -45,7 +45,8 @@ class AchatController extends Controller
         $i=0;
         foreach(Cart::content() as $ouvrage){
             $ouvrages['ouvrage_'.$i][]= $ouvrage->model->Titre;
-            $ouvrages['ouvrage_'.$i][]= $ouvrage->model->prix;
+            $ouvrages['ouvrage_'.$i][]= $ouvrage->model->Couverture;
+            $ouvrages['ouvrage_'.$i][]= $ouvrage->model->Auteur;
             $i++;
         }
 

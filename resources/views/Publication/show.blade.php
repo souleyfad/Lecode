@@ -13,10 +13,14 @@
                         <p class="text-justify">{{ $publication->Resume }}</p>
                         <div class="row mt-3">
                             <div class="col-auto">
-                            <form action="#" method="post">
+                            <form action="{{ route('publication.valide', $publication->id) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="ouvrage_id" value="{{ $publication->id }}">
+                                @if($publication->valide == true)
+                                <button type="submit" class="btn btn-success" disabled = 'disabled'>Valider pour l'éditon</button>
+                                @else
                                 <button type="submit" class="btn btn-success">Valider pour l'éditon</button>
+                                @endif
                             </form>
                             </div>
                             <div class="col-auto">
