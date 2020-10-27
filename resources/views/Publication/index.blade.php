@@ -45,7 +45,11 @@
             <td>{{ $pub->Auteur }}</td>
             <td>{{ $pub->user->nom }}</td>
             <td>
+            @if(auth()->user()->isEditeur == 1)
+            <a href="{{ route('editpub.show', $pub->id) }}" class="btn btn-secondary">Voir</a>
+            @else
             <a href="{{ route('publication.show', $pub->id) }}" class="btn btn-secondary">Voir</a>
+            @endif
                 <form action="{{ route('publication.destroy', $pub->id) }}" method="POST" style=" display: inline">
                     @csrf
                     @method('DELETE')

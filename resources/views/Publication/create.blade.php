@@ -7,6 +7,10 @@
         Des conseils très utiles en vue de la bonne evoluton de votre œuvres sont 
         prevu  <a href="#">ici</a>. Mais si vous voulez, publier vous juste <a href="#">là</a> 
         </p>
+        <br>
+        @if( Auth::user()->isEditeur == 1)
+            Vous avez accès au publications <a href="{{ route('publication.editeur') }}">ici</a>
+        @endif
     </div>
     <div class="col-md-6 mt-5 mb-3 ml-auto">
         <div class="mt-5">

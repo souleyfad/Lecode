@@ -38,12 +38,26 @@ class AccueilController extends Controller
         $id = $user->id;
         $achats = Achat::where('user_id', $id)->get();
             for($i = 0; $i < $achats->count(); $i++){
-                $livres[$i] = unserialize($achats[$i]->ouvrage);
+                $livres[][] = unserialize($achats[$i]->ouvrage);
             }
-            $l=count($livres);
-            for($i = 0; $i < $l+1; $i++){
-                dd($livres[$i]);
+            //dd($livres);
+            /*$l=count($livres);
+            dd($l);
+            for($i = 0; $i < $l; $i++){
+                $livres[$i];
+            }*/
+            if($achats->count() ==0)
+            {
+                return view('Accueil.bibliotheque', compact('achats'));
             }
-        return view('Accueil.bibliotheque', compact('achats', 'livres'));
+            else
+            {
+                return view('Accueil.bibliotheque', compact('achats', 'livres'));
+            }
+    }
+
+    public function apercubiblio($id){
+        $ouvrage = Ouvrage::find($id);
+        return view('Accueil.apercubiblio', compact('ouvrage'));
     }
 }

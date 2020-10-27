@@ -58,7 +58,7 @@
     </table>
     </div>
     @else
-        vous n'avez aucune publication
+        Vous n'avez aucune publication.
     @endif
 </div>
 @endsection

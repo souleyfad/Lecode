@@ -44,6 +44,7 @@ class AchatController extends Controller
         $ouvrages = [];
         $i=0;
         foreach(Cart::content() as $ouvrage){
+            $ouvrages['ouvrage_'.$i][]= $ouvrage->model->id;
             $ouvrages['ouvrage_'.$i][]= $ouvrage->model->Titre;
             $ouvrages['ouvrage_'.$i][]= $ouvrage->model->Couverture;
             $ouvrages['ouvrage_'.$i][]= $ouvrage->model->Auteur;
@@ -73,9 +74,14 @@ class AchatController extends Controller
      * @param  \App\Achat  $achat
      * @return \Illuminate\Http\Response
      */
-    public function show(Achat $achat)
+    public function show($id)
     {
-        //
+        $achats = Achat::where('id', $id)->get();
+        for($i = 0; $i < $achats->count(); $i++){
+            $livres[][] = unserialize($achats[$i]->ouvrage);
+        }
+        
+        return view('admin.achat.show', compact('achats', 'livres'));
     }
 
     /**

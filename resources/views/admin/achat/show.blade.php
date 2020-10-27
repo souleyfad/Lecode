@@ -1,11 +1,9 @@
-@extends('layouts.app')
+@extends('admin.layout')
 
-@section('content')
+@section('contenu')
 <div class="album py-5 bg-light">
-    <div class="container mt-5 pt-5">
-        <div class="row mb-2 mt-5">
-        @if($achats->count() !=0)
-            Ma bibliothèque
+    <div class="container">
+        <div class="row mb-2">
             @foreach ($livres as $clef => $tableau1)
             @foreach ($tableau1 as $clef1 => $tableau2)
                 @foreach($tableau2 as $key => $livre)
@@ -25,10 +23,6 @@
                 @endforeach
             @endforeach
             @endforeach
-            
-        @else
-            Vous n'avez encore effectué aucun achat et donc vous disposez pas encore de bibliothèque merci.
-        @endif
         </div>
     </div>
 </div>

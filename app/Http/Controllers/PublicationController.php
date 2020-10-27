@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Genre;
 use App\Publication;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicationController extends Controller
 {
@@ -13,6 +14,11 @@ class PublicationController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index','show','destroy','search','valide']);
+    }
+
+    public function autorisation()
+    {
+        
     }
     /**
      * Display a listing of the resource.
@@ -23,6 +29,18 @@ class PublicationController extends Controller
     {
         $publication = Publication::all();
         $genre = Genre::all();
+        
+        return view('Publication.index', compact('publication'));
+    }
+
+    /**
+     * pour editeur afin d'utiliser son middleware autorise
+     */
+    public function indexedit()
+    {
+        $publication = Publication::all();
+        $genre = Genre::all();
+        
         return view('Publication.index', compact('publication'));
     }
 
@@ -78,6 +96,15 @@ class PublicationController extends Controller
         return view('Publication.show',compact('publication'));
     }
 
+     /**
+     * pour editeur afin d'utiliser son middleware autorise
+     */
+
+    public function showedit($id)
+    {
+        $publication = Publication::find($id);
+        return view('Publication.show',compact('publication'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

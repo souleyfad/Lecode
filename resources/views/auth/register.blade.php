@@ -10,7 +10,7 @@
                 <div class="modal-content" style="background-color: #3F704D; padding: 0 5px; border-radius: 10px;">
                     <div class="col-12 logo">
                         <img src="{{ asset('images/monlogo.png') }}" class="lelogo" alt="le logo" 
-                        style=" height : 120px; width : 120px">
+                        style=" height : 120px; width : 120px; background-color: white; border-radius: 50%">
                     </div>
                     <div class="col-12 form-input">
                     <form method="POST" action="{{ route('register') }}">

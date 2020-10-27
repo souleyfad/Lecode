@@ -26,6 +26,7 @@ Route::get('contactez-nous', 'AccueilController@contact')->name('contact');
 Route::get('contact','AccueilController@create')->name('contact.create');
 Route::post('contact','AccueilController@store')->name('contact.store');
 Route::get('accueil/{user}/bibliotheque', 'AccueilController@bibliotheque')->name('bibliotheque');
+Route::get('accueil/bibliotheque/{ouvrage}', 'AccueilController@apercubiblio')->name('apercubiblio');
 
 //authentification
 Auth::routes();
@@ -55,19 +56,27 @@ Route::patch('admin/users/{user}', 'Admin\UserController@update')->name('user.up
 Route::delete('admin/users/{user}','Admin\UserController@destroy')->name('user.destroy');
 
 //Publication
-Route::get('publication','PublicationController@index')->name('publication')->middleware('auth:admin');//admin et editeur
+/*Route::group(['middleware' => ['auth:admin', 'autorise']], function() {
+    Route::get('publication','PublicationController@index')->name('publication');
+});*/
+Route::get('publication','PublicationController@index')->name('publication')->middleware('auth:admin');//admin
 Route::get('publication/create','PublicationController@create')->name('publication.create');
 Route::post('publication/create','PublicationController@store')->name('publication.store');
-Route::get('publication/{publication}','PublicationController@show')->name('publication.show');//admin et editeur
+Route::get('publication/{publication}','PublicationController@show')->name('publication.show')->middleware('auth:admin');//admin
 Route::delete('publication/{publication}','PublicationController@destroy')->name('publication.destroy')->middleware('auth:admin');//admin
 Route::get('admin/publication/search','PublicationController@search')->name('publication.search');//admin et editeur;
-Route::post('admin/publication/{publication}/valide','PublicationController@valide')->name('publication.valide');//admin et editeur;
 Route::get('publication/{publication}/apercu', function ($id) {
     $publication = Publication::find($id);
     return view('Publication.apercu',compact('publication'));
 })->name('apercu');
 Route::get('publication/{user}/œuvres','PublicationController@mespublication')->name('mespublications');
 Route::get('publication/œuvres/{publication}','PublicationController@avancee')->name('publication.avancee');
+
+//publication editeurs routes
+Route::get('/editeur/publication','PublicationController@indexedit')->name('publication.editeur')->middleware('autorise');
+Route::get('/editeur/publication/{publication}','PublicationController@showedit')->name('editpub.show')->middleware('autorise');
+Route::post('admin/publication/{publication}/valide','PublicationController@valide')->name('publication.valide')->middleware('autorise');//editeur;
+
 
 //Ouvrage et Librairie
 Route::get('ouvrage','OuvrageController@index')->name('ouvrage');
@@ -91,6 +100,7 @@ Route::delete('panier/{panier}','PanierController@destroy')->name('panier.destro
 Route::get('listeachats', 'AchatController@index')->name('achats.liste')->middleware('auth:admin');//admin
 Route::post('achat','AchatController@store')->name('achat.store');
 Route::get('admin/achat/search','AchatController@search')->name('achat.search')->middleware('auth:admin');//admin;
+Route::get('admin/achat/{achat}','AchatController@show')->name('achat.show')->middleware('auth:admin');//admin
 
 
 //genre gerer par l'admin

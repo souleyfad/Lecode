@@ -10,7 +10,7 @@
                 <div class="modal-content" style="background-color: #3F704D; padding: 0 5px; border-radius: 10px;">
                     <div class="col-12 logo">
                         <img src="{{ asset('images/monlogo.png') }}" class="lelogo" alt="le logo" 
-                        style=" height : 120px; width : 120px">
+                        style=" height : 120px; width : 120px; background-color: white; border-radius: 50%">
                     </div>
                     <div class="col-12 form-input">
                     <form method="POST" action="{{ route('login') }}">
@@ -20,7 +20,8 @@
                             <label for="email" class="text-center">{{ __('E-Mail Address') }}</label>
 
                             <div class="">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
+                                placeholder="Votre email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +35,8 @@
                             <label for="password" class="text-center">{{ __('Password') }}</label>
 
                             <div class="">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
+                                placeholder="Mot de passe" name="password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -57,10 +59,11 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="row text-center" style="margin-left: 35%;">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="row" style="margin-left: 35%;">
+                                <button type="submit" class="col-auto btn btn-primary">
                                     Se connecter
                                 </button>
+                                <a class="col- auto  pt-3 nav-link" href="{{ route('register') }}" style="color:blanchedalmond; font-size: 18px">S'inscrire</a>
                             </div>
                             <div class="row text-center">
                                 @if (Route::has('password.request'))

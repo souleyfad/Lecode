@@ -1,5 +1,4 @@
 #lanavbar ul li a {
-    /*color: #43270F;*/
     color: white;
 }
 #lanavbar ul li a:hover {
@@ -7,9 +6,9 @@
     color: #362312;
 }
 
-#lanavbar ul li a:active {
-    background-color: #5097A4;
-    color: #362312;
+#lanavbar ul .lienactive {
+    background-color: white;
+    color:#3F704D;
 }
 
 #genre a {
@@ -128,8 +127,15 @@ footer p, footer a {
     color: white;
 }
 
-@media all and (max-width: 850px)
+#scdnav {
+    visibility: hidden;
+}
+@media all and (max-width: 760px)
 {
+    #carouselExampleSlidesOnly
+    {
+        visibility: hidden;   
+    }
     .search-box {
         position: absolute;
         top: 50%;
@@ -185,5 +191,19 @@ footer p, footer a {
     }
     .search-box:hover > .search-btn {
         background: white;
+    }
+
+    #scdnav {
+        visibility: visible;
+    }
+    #scdnav ul li a {
+        color: white;
+    }
+    #scdnav ul li a:hover {
+        background-color: #5097A4;
+        color: #362312;
+    }
+    #scdnav ul li {
+        text-decoration: none;
     }
 }

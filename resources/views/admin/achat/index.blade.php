@@ -48,7 +48,7 @@
             <td>{{ $achat->moyenPayement }}</td>
             <td>{{ $achat->created_at->format('d/m/Y') }}</td>
             <td>
-            <a href="#" class="btn btn-secondary">Voir</a>
+            <a href="{{ route('achat.show', $achat->id) }}" class="btn btn-secondary">Voir</a>
                 <form action="#" method="POST" style=" display: inline">
                     @csrf
                     @method('DELETE')

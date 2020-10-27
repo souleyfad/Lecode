@@ -110,6 +110,7 @@ class UserController extends Controller
             'isAuteur' => 'required|boolean',
             'isClient' => 'required|boolean',
         ]);
+        $data['password']= Hash::make($data['password']);
         //dd($data);
         $user->update($data);
         
@@ -128,6 +129,7 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('admin.users')->with('message', 'Suppression effectuée avec succès.');
+
     }
 
     public function search(Request $request)
